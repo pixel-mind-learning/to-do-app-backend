@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 /**
  * @author maleeshasa
  * @Date 2025-07-04
@@ -26,4 +28,7 @@ public class Task {
 
     @Column(name = "completed", nullable = false)
     private Boolean completed;
+
+    @Column(name = "due_date", nullable = false)
+    private LocalDate dueDate;
 }

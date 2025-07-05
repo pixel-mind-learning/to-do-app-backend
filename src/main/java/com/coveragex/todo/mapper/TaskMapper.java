@@ -6,6 +6,7 @@ import com.coveragex.todo.model.Task;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class TaskMapper {
         task.setTitle(taskRequest.getTitle());
         task.setDescription(taskRequest.getDescription());
         task.setCompleted(Boolean.FALSE);
+        task.setDueDate(LocalDate.parse(taskRequest.getDueDate()));
         log.info("TaskMapper.mapToEntity() => completed.");
         return task;
     }
@@ -31,6 +33,7 @@ public class TaskMapper {
         dto.setTitle(task.getTitle());
         dto.setDescription(task.getDescription());
         dto.setCompleted(task.getCompleted());
+        dto.setDueDate(task.getDueDate());
         log.info("TaskMapper.mapToDTO() => completed.");
         return dto;
     }

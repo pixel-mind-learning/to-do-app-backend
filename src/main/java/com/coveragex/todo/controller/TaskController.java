@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * @author maleeshasa
  * @Date 2025-07-04
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 @Slf4j
 @RestController
