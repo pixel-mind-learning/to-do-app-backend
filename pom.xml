@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.coveragex</groupId>
-    <artifactId>todo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>todo</name>
+    <artifactId>to-do-app-backend</artifactId>
+    <version>0.0.1</version>
+    <name>to-do-app-backend</name>
     <description>Demo project for Spring Boot</description>
     <url/>
     <licenses>
@@ -76,6 +76,8 @@
                             <artifactId>lombok</artifactId>
                         </path>
                     </annotationProcessorPaths>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -88,6 +90,16 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.5</version>
+                <configuration>
+                    <to>
+                        <image>docker.io/maleeshasa/${project.artifactId}:v1</image>
+                    </to>
                 </configuration>
             </plugin>
         </plugins>

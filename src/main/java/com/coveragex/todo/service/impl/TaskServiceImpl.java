@@ -3,6 +3,7 @@ package com.coveragex.todo.service.impl;
 import com.coveragex.todo.dto.CommonResponse;
 import com.coveragex.todo.dto.task.TaskRequestDTO;
 import com.coveragex.todo.dto.task.TaskResponseDTO;
+import com.coveragex.todo.exception.RecordNotFoundException;
 import com.coveragex.todo.mapper.TaskMapper;
 import com.coveragex.todo.model.Task;
 import com.coveragex.todo.repository.TaskRespository;
@@ -67,7 +68,7 @@ public class TaskServiceImpl implements TaskService {
     public CommonResponse makeToDoCompleted(Integer id) {
         log.info("TaskServiceImpl.makeToDoCompleted() => started.");
         Task task = taskRespository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not found."));
+                .orElseThrow(() -> new RecordNotFoundException("Task not found."));
 
         task.setCompleted(Boolean.TRUE);
         taskRespository.save(task);
