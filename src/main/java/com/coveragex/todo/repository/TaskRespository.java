@@ -1,6 +1,7 @@
 package com.coveragex.todo.repository;
 
 import com.coveragex.todo.model.Task;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,5 @@ import java.util.List;
 @Repository
 public interface TaskRespository extends JpaRepository<Task, Integer> {
 
-    List<Task> findByCompletedFalseOrderByIdAsc();
+    List<Task> findByCompletedFalseOrderByIdAsc(PageRequest pageRequest);
 }

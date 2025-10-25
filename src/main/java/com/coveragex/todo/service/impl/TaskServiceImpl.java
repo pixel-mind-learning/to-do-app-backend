@@ -10,6 +10,7 @@ import com.coveragex.todo.repository.TaskRespository;
 import com.coveragex.todo.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -88,7 +89,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public CommonResponse getAllPendingTodos() {
         log.info("TaskServiceImpl.getAllPendingTodos() => started.");
-        List<Task> tasks = taskRespository.findByCompletedFalseOrderByIdAsc();
+        List<Task> tasks = taskRespository.findByCompletedFalseOrderByIdAsc(PageRequest.of(0, 5));
         if (!tasks.isEmpty()) {
             return CommonResponse.builder()
                     .message("All pending todos fetched successfully.")

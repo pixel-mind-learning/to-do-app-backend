@@ -73,7 +73,7 @@ class TaskServiceImplTest {
     @Test
     void testGetAllPendingTodos() {
         List<Task> tasks = List.of(new Task());
-        when(taskRepository.findByCompletedFalseOrderByIdAsc()).thenReturn(tasks);
+        when(taskRepository.findByCompletedFalseOrderByIdAsc(PageRequest.of(0, 5))).thenReturn(tasks);
         when(taskMapper.mapToDTOList(tasks)).thenReturn(List.of(new TaskResponseDTO()));
 
         CommonResponse response = taskService.getAllPendingTodos();
